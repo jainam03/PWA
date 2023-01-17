@@ -30,17 +30,99 @@
         }
 
         body {
+            margin: 0;
+            padding: 10px;
+        }
+
+        .main-container {
             display: flex;
             align-items: center;
-            justify-content: center;
 
             flex-direction: column;
+        }
+
+        .card-div {
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+
+            width: 400px;
+            height: 500px;
+
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+
+            padding: 15px;
+        }
+
+        .input-div {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 0 10px 0 10px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+
+        .input-div input {
+            outline: none;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+
+            padding: 5px;
+
+            transition: 0.5s;
+        }
+
+        input:focus {
+            outline: none;
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        input::placeholder {
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        .button-div {
+            display: flex;
+            /* justify-content: center; */
+            flex-direction: column;
+            align-items: center;
+
+            margin-top: 25px;
+        }
+
+        #signin-btn {
+
+            cursor: pointer;
+            margin: 10px;
+            padding: 8px;
+
+            outline: none;
+
+            border: none;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 5px;
+
+            max-width: 100px;
+
+            transition: 0.4s;
+        }
+
+        #signin-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        #signin-btn:active {
+            background-color: rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
 
 <body>
-    <p>Hi I am Jainam! 👋</p>
+    <!-- <p>Hi I am Jainam! 👋</p>
     <br>
     <h3>Check out some of my projects:</h3>
     <br>
@@ -49,8 +131,41 @@
         <li><a href="https://jainam03.github.io/unit-converter/">Unit converter</a></li>
         <li><a href="https://jainam03.github.io/weather-app-VanillaJS/">Weather app in JS</a></li>
         <li><a href="https://askkweatherr.netlify.app/">Weather app in React</a></li>
-    </ul>
+    </ul> -->
+
+    <div class="main-container">
+        <div class="card-div">
+            <form name="myForm">
+                <div class="input-div">
+                    <input type="text" placeholder="Enter email/username" id="username-el">
+                    <input type="password" placeholder="Enter your password" id="password-el">
+                </div>
+            </form>
+
+            <div class="button-div">
+                <button id="signin-btn">Sign in</button>
+            </div>
+        </div>
+    </div>
     <script src="src/index.js"></script>
+    <script type="text/javascript">
+        let signinBtn = document.getElementById("signin-btn")
+        let usernameEl = document.getElementById('username-el')
+        let passwordEl = document.getElementById('password-el')
+
+        signinBtn.addEventListener("click", function () {
+            if (usernameEl.value == "") {
+                alert("Please enter username!")
+                return false;
+            } else if(passwordEl.value == "") {
+                alert("Please provide your password")
+                return false
+            } else {
+                alert("Sign in successfull! You may close this page now")
+                window.location.reload()
+            }
+        })
+    </script>
 </body>
 
 </html>
